@@ -49,12 +49,38 @@ class Api extends REST_Controller {
 	public function __construct()
 	{	
 		parent::__construct();
-
+        $this->load->database();
 	}
 	public function notes_post()
 	{
-        die('test');
+        $today = date('Y-m-j');
+        $this->db->query('insert into notes (title, note, createtime, lastupdatetime) values ("title","note", "'.$today.'", "'.$today.'")');
+	}
+    
+	public function notes_get()
+	{
+        $noteid = $this->get('noteid');
+        $userid = $this->get('userid');
+        $result = $this->db->query('select * from notes, users_notes where users_notes.notesid = notes.id and notes.id = ' . $noteid . ' and users_notes.userid = ' . $userid);
+        var_dump($result->result_array());
         
+	}
+    
+	public function notes_put()
+	{
+        //noteid=1&userid=1&title=newtitle&note=newNotes
+        $noteid = $this->put('noteid');
+        $userid = $this->put('userid');
+        $title = $this->put('title');
+        $note = $this->put('note');
+        $this->db->query('update notes set title = "'. $title. '", note = "'. $note . '" where id = ' . $noteid);
+	}
+    
+	public function notes_delete($noteid)
+	{   
+        // http://bluemedia.local/index.php/api/notes/3
+        // http://example.com/books?format=json
+        $this->db->query('delete from notes where id = '.$noteid);
 	}
 
 
