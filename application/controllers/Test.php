@@ -21,7 +21,6 @@ public function getAllTasks_post(){
 	}else{
 		// $this->response(array('error' => 'User already added'), 400); //todo
 		
-		
 		// $this->updateuser_post($this->input->post('access_token'), $user_detail);
 		
 		$user_detail['agree_sweeps'] = $this->input->post('agree_sweeps');

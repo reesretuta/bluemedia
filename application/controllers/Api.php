@@ -84,6 +84,10 @@ class Api extends REST_Controller {
 	}
 
 
+    //curl -X DELETE http://bluemedia.local/index.php/api/notes/3 -d '{}'
+    //curl -X PUT http://bluemedia.local/index.php/api/notes/3 -d '{}'
+        
+
     
 }
 
