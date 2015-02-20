@@ -51,9 +51,10 @@ class Api extends REST_Controller {
 		parent::__construct();
 
 	}
-	public function index_get()
+	public function notes_post()
 	{
-		$this->load->view('welcome_message');
+        die('test');
+        
 	}
 
 
