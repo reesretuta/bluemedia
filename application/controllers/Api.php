@@ -62,12 +62,14 @@ class Api extends REST_Controller {
         $noteid = $this->get('noteid');
         $userid = $this->get('userid');
         $result = $this->db->query('select * from notes, users_notes where users_notes.notesid = notes.id and notes.id = ' . $noteid . ' and users_notes.userid = ' . $userid);
-        var_dump($result->result_array());
         
+        //response in JSON
+        var_dump($result->result_array());
 	}
     
 	public function notes_put()
 	{
+        //should pass notes via /notes/id
         //noteid=1&userid=1&title=newtitle&note=newNotes
         $noteid = $this->put('noteid');
         $userid = $this->put('userid');
@@ -83,11 +85,8 @@ class Api extends REST_Controller {
         $this->db->query('delete from notes where id = '.$noteid);
 	}
 
-
     //curl -X DELETE http://bluemedia.local/index.php/api/notes/3 -d '{}'
-    //curl -X PUT http://bluemedia.local/index.php/api/notes/3 -d '{}'
-        
-
+    //curl -X PUT http://http://54.153.14.204//index.php/api/notes/3 -d '{}
     
 }
 
